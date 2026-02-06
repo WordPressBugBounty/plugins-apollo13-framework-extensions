@@ -24,11 +24,15 @@ function a13fe_custom_permalink( $url, $post ) {
 
 	$custom_link_types = array( 'post', $album_type, $work_type );
 	if ( in_array( $post->post_type, $custom_link_types ) ) {
-		$custom_url = get_post_meta( $post->ID, '_alt_link', true );
-		//use custom link if available
-		if ( strlen( $custom_url ) ) {
-			return $custom_url;
-		}
+        $custom_url = get_post_meta( $post->ID, '_alt_link', true );
+
+        // Sanitize the URL
+        $custom_url = esc_url_raw( trim( $custom_url ) );
+
+        // Use custom link if available and valid
+        if ( ! empty( $custom_url ) ) {
+            return esc_url( $custom_url );
+        }
 
 		return $url;
 	}

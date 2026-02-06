@@ -131,6 +131,11 @@ else{
             if ( isset( $width ) ) {
                 //get image size after cropping
                 $dims = image_resize_dimensions( $orig_w, $orig_h, $width, isset( $height ) ? $height : null, isset( $crop ) ? $crop : false );
+                //image_resize_dimensions can return false for invalid inputs (e.g. zero dimensions).
+                //Avoid fatal "Trying to access array offset on value of type bool" on PHP 8+.
+                if ( ! is_array( $dims ) || ! isset( $dims[4], $dims[5] ) ) {
+                    return $url;
+                }
                 $dst_w = $dims[4];
                 $dst_h = $dims[5];
 

@@ -1,9 +1,9 @@
-= 1.9.6(21.08.2024) =
+= 1.9.9(4.12.2025) =
 
-Tested with WordPress 6.6
+Tested with WordPress 6.9
 
 Fixed:
--demo importer improvement
+- security fix (XSS) for posts 'Alternative link'
 
 ----------------
 

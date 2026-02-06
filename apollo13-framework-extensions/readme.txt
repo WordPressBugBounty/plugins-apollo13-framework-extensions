@@ -50,6 +50,13 @@ All themes compatible are listed above in description.
 
 == Changelog ==
 
+= 1.9.9(4.12.2025) =
+
+Tested with WordPress 6.9
+
+Fixed:
+- security fix (XSS) for posts 'Alternative link'
+
 = 1.9.8(11.07.2024) =
 
 Tested with WordPress 6.5
